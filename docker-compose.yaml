@@ -1,0 +1,41 @@
+version: '3.8'
+
+networks:
+  apiapp:
+
+services:
+  database:
+    container_name: dbAPi
+    image: mcr.microsoft.com/mssql/server:latest
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "arS12qt@16mv"
+    networks:
+      - apiapp 
+
+  backend:
+    image: testservice:latest
+    ports:
+      - "5020:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: "database"
+      DB_NAME: "questionsdb"
+      DB_SA_PASSWORD: "arS12qt@16mv"
+    depends_on:
+      - database
+    networks:
+      - apiapp
+
+  frontend:
+    image: kerikir/react-sixth-lab-frontend
+    ports:
+      - "8000:3000"
+    depends_on:
+      - backend
+    environment:
+      REACT_APP_API_URL: "http://localhost:5020/"
+    networks:
+     - apiapp
