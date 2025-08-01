@@ -46,7 +46,7 @@
 ### Документация API (Swagger)
 <img src="https://github.com/user-attachments/assets/c9163121-e61f-4127-8f81-97136bf6b33c" width="600" alt="Swagger UI">
 
-### Docker
+### Docker контейнер
 <img src="https://github.com/user-attachments/assets/7939804f-8398-434b-a8db-31f2a879c09d" width="600" alt="Docker контейнер">
 
 ## 🚀 Запуск проекта
